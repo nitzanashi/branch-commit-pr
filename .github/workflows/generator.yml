@@ -16,6 +16,7 @@ env:
   PROJECT: ${{github.event.inputs.project}}
   BASE_BRANCH: ${{github.event.inputs.branch}}
   NODE_VERSION: '14.1'
+  GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
 jobs:
   commit:
