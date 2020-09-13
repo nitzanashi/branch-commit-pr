@@ -7,14 +7,9 @@ on:
         description: 'Project'
         required: true
         default: 'app'
-      branch:
-        description: 'Branch'
-        required: true
-        default: 'master'
 
 env:
   PROJECT: ${{github.event.inputs.project}}
-  BASE_BRANCH: ${{github.event.inputs.branch}}
   NODE_VERSION: '14.1'
   GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
@@ -43,11 +38,9 @@ jobs:
         id: cpr
         uses: peter-evans/create-pull-request@v3
         with:
-          commit-message: Update report
-          committer: GitHub <noreply@github.com>
-          author: ${{ github.actor }} <${{ github.actor }}@users.noreply.github.com>
+          commit-message: update Translations
           signoff: false
-          branch: example-patches
+          branch: translations/${{env.PROJECT}}/${{env.RANDOM_ID}}
           delete-branch: true
           title: '[Example] Update report'
           body: |
