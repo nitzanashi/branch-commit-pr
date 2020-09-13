@@ -35,10 +35,7 @@ jobs:
       - run: npm ci
       - name: Id
         run: node scripts/id.js
-      - name: Create Branch
-        uses: peterjgrainger/action-create-branch@v1.0.0
-        with:
-          branch: translations/${{env.PROJECT}}/${{env.RANDOM_ID}}
+
       - name: Make changes to pull request
         run: date +%s > report.txt
 
