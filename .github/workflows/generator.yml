@@ -13,8 +13,8 @@ on:
         default: 'release'
 
 env:
-  PROJECT: 'seo'
-  BASE_BRANCH: 'master'
+  PROJECT: ${{github.event.inputs.project}}
+  BASE_BRANCH: ${{github.event.inputs.branch}}
   NODE_VERSION: '14.1'
 
 jobs:
