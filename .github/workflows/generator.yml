@@ -47,7 +47,7 @@ jobs:
       - name: Generate
         run: scripts/generator.sh
 # You can make whatever type of change to the repo...
-      - run: echo "123" > ./pathToRepo/file.txt
+      - run: echo "123" > ./file.txt
       - name: Commit
         uses: EndBug/add-and-commit@v4
         with:
