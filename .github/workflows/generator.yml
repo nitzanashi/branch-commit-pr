@@ -47,10 +47,10 @@ jobs:
       - name: Generate
         run: scripts/generator.sh
       - name: Commit
-        uses: stefanzweifel/git-auto-commit-action@v4
+        uses: EndBug/add-and-commit@v4
         with:
-          commit_message: Create new file
-          branch: translations/${{env.PROJECT}}/${{env.RANDOM_ID}}
+          message: Create new file
+          ref: translations/${{env.PROJECT}}/${{env.RANDOM_ID}}
       - name: Create Pull Request
         uses: peter-evans/create-pull-request@v3
         with:
