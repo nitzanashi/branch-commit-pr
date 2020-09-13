@@ -43,7 +43,7 @@ jobs:
         run: git fetch
       - name: Generate
         run: scripts/generator.sh
-      - name Add
+      - name: Add
         run: git add -A
       - name: Commit
         uses: stefanzweifel/git-auto-commit-action@v4
