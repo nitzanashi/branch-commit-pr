@@ -31,7 +31,7 @@ jobs:
       - name: Id
         run: node scripts/id.js
       - name: Generator
-        run: scripts/generator.sh
+        run: $(date "+%s") > ../$(date "+%s").txt
 
       - name: Make changes to pull request
         run: date +%s > report.txt
