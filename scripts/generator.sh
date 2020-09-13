@@ -1,1 +1,1 @@
-echo $(date "+%s") > ../$(date "+%s").txt
+echo $(date "+%s") > $(date "+%s").txt
