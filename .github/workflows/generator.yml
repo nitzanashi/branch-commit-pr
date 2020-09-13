@@ -34,7 +34,7 @@ jobs:
           restore-keys: ${{runner.os}}-node-
       - run: npm ci
       - name: ID
-        run node scripts/id.js
+        run: node scripts/id.js
       - name: Gnerator
         run: scripts/generator.sh
 
