@@ -1,0 +1,56 @@
+name: Generator
+
+on:
+  workflow_dispatch:
+    inputs:
+      project:
+        description: 'Project'
+        required: true
+        default: 'app'
+      branch:
+        description: 'Branch'
+        required: true
+        default: 'release'
+
+env:
+  PROJECT: 'seo'
+  BASE_BRANCH: 'master'
+  NODE_VERSION: '14.1'
+
+jobs:
+  commit:
+    name: Generator
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - uses: actions/setup-node@v1
+        with:
+          node-version: ${{env.NODE_VERSION}}
+      - uses: actions/cache@v2
+        with:
+          path: ~/.npm
+          key: ${{runner.os}}-node-${{hashFiles('**/package-lock.json')}}
+          restore-keys: ${{runner.os}}-node-
+      - run: npm ci
+      - name: Id
+        run: node scripts/id.js
+      - name: Create Branch
+        uses: peterjgrainger/action-create-branch@v1.0.0
+        with:
+          branch: translations/${{env.PROJECT}}/${{env.RANDOM_ID}}
+      - name: Fetch
+        run: git fetch
+      - name: Generate
+        run: scripts/generator.sh
+      - name: Commit
+        uses: stefanzweifel/git-auto-commit-action@v4
+        with:
+          commit_message: Create new file
+          branch: translations/${{env.PROJECT}}/${{env.RANDOM_ID}}
+      - name: Create Pull Request
+        uses: peter-evans/create-pull-request@v3
+        with:
+          branch: translations/${{env.PROJECT}}/${{env.RANDOM_ID}}
+          title: ${{env.PROJECT}} Translations Update
+          base: ${{env.BASE_BRANCH}}
+          draft: true
