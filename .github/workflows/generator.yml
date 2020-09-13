@@ -41,6 +41,9 @@ jobs:
           branch: translations/${{env.PROJECT}}/${{env.RANDOM_ID}}
       - name: Fetch
         run: git fetch
+      - uses: actions/checkout@v2
+        with:
+          ref: translations/${{env.PROJECT}}/${{env.RANDOM_ID}}
       - name: Generate
         run: scripts/generator.sh
       - name: Commit
