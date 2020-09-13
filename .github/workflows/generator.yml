@@ -50,7 +50,7 @@ jobs:
           delete-branch: true
           title: Update translations for ${{env.PROJECT}}
           body: |
-          Update translations
+            Update translations
 
-          ${{env.DIFF}}
+            ${{env.DIFF}}
           labels: update-translations
