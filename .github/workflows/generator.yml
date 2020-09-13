@@ -42,7 +42,7 @@ jobs:
           signoff: false
           branch: translations/${{env.PROJECT}}/${{env.RANDOM_ID}}
           delete-branch: true
-          title: '[Example] Update report'
+          title: Update translations for ${{env.PROJECT}}
           body: |
             Update report
             - Updated with *today's* date
